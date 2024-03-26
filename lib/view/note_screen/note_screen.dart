@@ -32,6 +32,55 @@ class Notescreen extends StatelessWidget {
                       borderRadius: BorderRadius.circular(10),
                       color: Colors.black12,
                     ),
+                    child: Padding(
+                      padding: const EdgeInsets.symmetric(
+                          horizontal: 10, vertical: 5),
+                      child: Column(
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: [
+                          Row(
+                              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                              children: [
+                                Text(
+                                  "Title",
+                                  style: TextStyle(
+                                      fontSize: 17,
+                                      fontWeight: FontWeight.w600),
+                                ),
+                                Row(
+                                  children: [
+                                    Icon(Icons.edit),
+                                    SizedBox(
+                                      width: 10,
+                                    ),
+                                    Icon(Icons.delete),
+                                  ],
+                                ),
+                              ]),
+                          Text(
+                            "Description",
+                            style: TextStyle(
+                                fontSize: 17, fontWeight: FontWeight.w600),
+                          ),
+                          Padding(
+                            padding: const EdgeInsets.all(8.0),
+                            child: Row(
+                              mainAxisAlignment: MainAxisAlignment.end,
+                              children: [
+                                Text(
+                                  "date",
+                                  style: TextStyle(fontWeight: FontWeight.w500),
+                                ),
+                                SizedBox(
+                                  width: 10,
+                                ),
+                                Icon(Icons.share)
+                              ],
+                            ),
+                          )
+                        ],
+                      ),
+                    ),
                   )
                 ],
               ),
