@@ -56,11 +56,36 @@ class _NotescreenState extends State<Notescreen> {
                     ),
                     TextField(
                       decoration: InputDecoration(
+                          suffixIcon: Icon(Icons.calendar_month),
                           border: OutlineInputBorder(),
                           fillColor: Color(0xffc0c0c0),
                           filled: true,
                           hintText: "Date"),
                     ),
+                    SizedBox(
+                      height: 20,
+                    ),
+                    Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                      children: [
+                        Container(
+                          child: Text(
+                            "Add",
+                            style: TextStyle(
+                                fontSize: 20, fontWeight: FontWeight.w600),
+                          ),
+                        ),
+                        Container(
+                          child: Text(
+                            "Cancel",
+                            style: TextStyle(
+                                fontSize: 20,
+                                fontWeight: FontWeight.w600,
+                                color: Colors.red),
+                          ),
+                        ),
+                      ],
+                    )
                   ],
                 ),
               ),
