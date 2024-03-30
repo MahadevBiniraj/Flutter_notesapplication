@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:notesapplication/core/Color_constants/ColorConstants.dart';
 
 class notecard extends StatelessWidget {
   const notecard({
@@ -18,7 +19,7 @@ class notecard extends StatelessWidget {
                 width: double.infinity,
                 decoration: BoxDecoration(
                   borderRadius: BorderRadius.circular(10),
-                  color: Colors.white,
+                  color: Colorconstants.c4,
                 ),
                 child: Padding(
                   padding:
