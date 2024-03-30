@@ -3,6 +3,7 @@ import 'dart:ui';
 import 'package:flutter/material.dart';
 import 'package:flutter/rendering.dart';
 import 'package:flutter/widgets.dart';
+import 'package:notesapplication/controller/Note_Screen_controller.dart';
 import 'package:notesapplication/view/note_screen/widgets/notecard.dart';
 
 class Notescreen extends StatefulWidget {
@@ -92,20 +93,27 @@ class _NotescreenState extends State<Notescreen> {
                         Row(
                           mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                           children: [
-                            Container(
-                              decoration: BoxDecoration(
-                                borderRadius: BorderRadius.circular(10),
-                                color: Colors.white,
-                              ),
-                              padding: EdgeInsets.symmetric(
-                                  horizontal: 20, vertical: 10),
-                              child: Center(
-                                child: Text(
-                                  "Add",
-                                  style: TextStyle(
-                                      fontSize: 20,
-                                      fontWeight: FontWeight.w600,
-                                      color: Colors.green),
+                            InkWell(
+                              onTap: () {
+                                Notescreencontroller.addnote();
+                                Navigator.pop(context);
+                                setState(() {});
+                              },
+                              child: Container(
+                                decoration: BoxDecoration(
+                                  borderRadius: BorderRadius.circular(10),
+                                  color: Colors.white,
+                                ),
+                                padding: EdgeInsets.symmetric(
+                                    horizontal: 20, vertical: 10),
+                                child: Center(
+                                  child: Text(
+                                    "Add",
+                                    style: TextStyle(
+                                        fontSize: 20,
+                                        fontWeight: FontWeight.w600,
+                                        color: Colors.green),
+                                  ),
                                 ),
                               ),
                             ),
@@ -144,7 +152,7 @@ class _NotescreenState extends State<Notescreen> {
         ),
         backgroundColor: Colors.black,
         body: ListView.builder(
-          itemCount: 10,
+          itemCount: Notescreencontroller.notecontroller.length,
           shrinkWrap: true,
           itemBuilder: (context, index) => notecard(),
         ));
