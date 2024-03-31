@@ -188,6 +188,10 @@ class _NotescreenState extends State<Notescreen> {
             des: Notescreencontroller.notecontroller[index]["des"],
             date: Notescreencontroller.notecontroller[index]["date"],
             clrindex: Notescreencontroller.notecontroller[index]["colorindex"],
+            onDeletePressed: () {
+              Notescreencontroller.deleteNote(index);
+              setState(() {});
+            },
           ),
         ));
   }

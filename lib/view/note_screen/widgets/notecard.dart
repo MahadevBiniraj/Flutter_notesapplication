@@ -1,20 +1,21 @@
 import 'package:flutter/material.dart';
 import 'package:notesapplication/controller/Note_Screen_controller.dart';
-import 'package:notesapplication/core/Color_constants/ColorConstants.dart';
 
 class notecard extends StatelessWidget {
-  const notecard({
+  notecard({
     super.key,
     required this.title,
     required this.des,
     required this.date,
     required this.clrindex,
+    this.onDeletePressed,
   });
   final String title;
 
   final String des;
   final String date;
   final int clrindex;
+  final void Function()? onDeletePressed;
 
   @override
   Widget build(BuildContext context) {
@@ -47,11 +48,13 @@ class notecard extends StatelessWidget {
                             ),
                             Row(
                               children: [
-                                Icon(Icons.edit),
+                                InkWell(child: Icon(Icons.edit)),
                                 SizedBox(
                                   width: 10,
                                 ),
-                                Icon(Icons.delete),
+                                InkWell(
+                                    onTap: onDeletePressed,
+                                    child: Icon(Icons.delete)),
                               ],
                             ),
                           ]),

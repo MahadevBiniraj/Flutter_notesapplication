@@ -23,4 +23,8 @@ class Notescreencontroller {
       "colorindex": clrindex,
     });
   }
+
+  static void deleteNote(int index) {
+    notecontroller.removeAt(index);
+  }
 }
