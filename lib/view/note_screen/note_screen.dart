@@ -14,26 +14,31 @@ class Notescreen extends StatefulWidget {
 }
 
 class _NotescreenState extends State<Notescreen> {
+  TextEditingController titlecontroller = TextEditingController();
+  TextEditingController descontroller = TextEditingController();
+  TextEditingController datecontroller = TextEditingController();
+  int selectedclrindex = 0;
   @override
   Widget build(BuildContext context) {
     return Scaffold(
         floatingActionButton: FloatingActionButton(
           onPressed: () {
             showModalBottomSheet(
+              isScrollControlled: true,
               context: context,
-              builder: (context) => Container(
-                decoration: BoxDecoration(
-                  borderRadius: BorderRadius.circular(25),
-                  color: Color(0xff4b4b4b),
-                ),
-                padding: EdgeInsets.symmetric(
-                  horizontal: 10,
-                  vertical: 15,
-                ),
-                child: Padding(
-                  padding: EdgeInsets.only(
-                      bottom: MediaQuery.of(context).viewInsets.bottom),
-                  child: SingleChildScrollView(
+              builder: (context) => SingleChildScrollView(
+                child: Container(
+                  decoration: BoxDecoration(
+                    borderRadius: BorderRadius.circular(25),
+                    color: Color(0xff4b4b4b),
+                  ),
+                  padding: EdgeInsets.symmetric(
+                    horizontal: 10,
+                    vertical: 15,
+                  ),
+                  child: Padding(
+                    padding: EdgeInsets.only(
+                        bottom: MediaQuery.of(context).viewInsets.bottom),
                     child: Column(
                       children: [
                         Text(
@@ -44,6 +49,7 @@ class _NotescreenState extends State<Notescreen> {
                               color: Colors.white),
                         ),
                         TextFormField(
+                          controller: titlecontroller,
                           decoration: InputDecoration(
                               border: OutlineInputBorder(),
                               fillColor: Colors.white,
@@ -54,6 +60,7 @@ class _NotescreenState extends State<Notescreen> {
                           height: 8,
                         ),
                         TextFormField(
+                          controller: descontroller,
                           decoration: InputDecoration(
                               border: OutlineInputBorder(),
                               fillColor: Colors.white,
@@ -65,6 +72,7 @@ class _NotescreenState extends State<Notescreen> {
                           height: 8,
                         ),
                         TextFormField(
+                          controller: datecontroller,
                           decoration: InputDecoration(
                               suffixIcon: Icon(Icons.calendar_month),
                               border: OutlineInputBorder(),
@@ -95,7 +103,12 @@ class _NotescreenState extends State<Notescreen> {
                           children: [
                             InkWell(
                               onTap: () {
-                                Notescreencontroller.addnote();
+                                Notescreencontroller.addnote(
+                                  title: titlecontroller.text,
+                                  des: descontroller.text,
+                                  date: datecontroller.text,
+                                  clrindex: selectedclrindex,
+                                );
                                 Navigator.pop(context);
                                 setState(() {});
                               },
@@ -154,7 +167,12 @@ class _NotescreenState extends State<Notescreen> {
         body: ListView.builder(
           itemCount: Notescreencontroller.notecontroller.length,
           shrinkWrap: true,
-          itemBuilder: (context, index) => notecard(),
+          itemBuilder: (context, index) => notecard(
+            title: Notescreencontroller.notecontroller[index]["title"],
+            des: Notescreencontroller.notecontroller[index]["des"],
+            date: Notescreencontroller.notecontroller[index]["date"],
+            clrindex: Notescreencontroller.notecontroller[index]["colorindex"],
+          ),
         ));
   }
 }

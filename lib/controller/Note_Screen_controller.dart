@@ -1,10 +1,18 @@
+import 'dart:ui';
+
 class Notescreencontroller {
   static List notecontroller = [];
-  static void addnote() {
+  static void addnote({
+    required String title,
+    required String des,
+    required String date,
+    int clrindex = 0,
+  }) {
     notecontroller.add({
-      "Title": "data1",
-      "des": "",
-      "date": "17",
+      "title": title,
+      "des": des,
+      "date": date,
+      "colorindex": clrindex,
     });
   }
 }

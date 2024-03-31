@@ -4,7 +4,16 @@ import 'package:notesapplication/core/Color_constants/ColorConstants.dart';
 class notecard extends StatelessWidget {
   const notecard({
     super.key,
+    required this.title,
+    required this.des,
+    required this.date,
+    required this.clrindex,
   });
+  final String title;
+
+  final String des;
+  final String date;
+  final int clrindex;
 
   @override
   Widget build(BuildContext context) {
@@ -31,7 +40,7 @@ class notecard extends StatelessWidget {
                           mainAxisAlignment: MainAxisAlignment.spaceBetween,
                           children: [
                             Text(
-                              "Title",
+                              title,
                               style: TextStyle(
                                   fontSize: 17, fontWeight: FontWeight.w600),
                             ),
@@ -49,7 +58,7 @@ class notecard extends StatelessWidget {
                         height: 2,
                       ),
                       Text(
-                        "Description",
+                        des,
                         style: TextStyle(
                             fontSize: 17, fontWeight: FontWeight.w600),
                       ),
@@ -59,7 +68,7 @@ class notecard extends StatelessWidget {
                           mainAxisAlignment: MainAxisAlignment.end,
                           children: [
                             Text(
-                              "date",
+                              date,
                               style: TextStyle(fontWeight: FontWeight.w500),
                             ),
                             SizedBox(
