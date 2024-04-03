@@ -23,6 +23,9 @@ class _NotescreenState extends State<Notescreen> {
     return Scaffold(
         floatingActionButton: FloatingActionButton(
           onPressed: () {
+            titlecontroller.clear();
+            descontroller.clear();
+            datecontroller.clear();
             showModalBottomSheet(
               isScrollControlled: true,
               context: context,
@@ -75,7 +78,17 @@ class _NotescreenState extends State<Notescreen> {
                           TextFormField(
                             controller: datecontroller,
                             decoration: InputDecoration(
-                                suffixIcon: Icon(Icons.calendar_month),
+                                suffixIcon: InkWell(
+                                    onTap: () async {
+                                      final selecteddatetime =
+                                          await showDatePicker(
+                                              context: context,
+                                              firstDate: DateTime.now(),
+                                              lastDate: DateTime(2030));
+                                      datecontroller.text =
+                                          selecteddatetime.toString();
+                                    },
+                                    child: Icon(Icons.calendar_month)),
                                 border: OutlineInputBorder(),
                                 fillColor: Colors.white,
                                 filled: true,
