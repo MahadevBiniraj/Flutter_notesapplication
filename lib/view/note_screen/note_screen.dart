@@ -3,6 +3,7 @@ import 'dart:ui';
 import 'package:flutter/material.dart';
 import 'package:flutter/rendering.dart';
 import 'package:flutter/widgets.dart';
+import 'package:intl/intl.dart';
 import 'package:notesapplication/controller/Note_Screen_controller.dart';
 import 'package:notesapplication/view/note_screen/widgets/notecard.dart';
 
@@ -85,8 +86,13 @@ class _NotescreenState extends State<Notescreen> {
                                               context: context,
                                               firstDate: DateTime.now(),
                                               lastDate: DateTime(2030));
-                                      datecontroller.text =
-                                          selecteddatetime.toString();
+                                      if (selecteddatetime != null) {
+                                        String formateddate =
+                                            DateFormat("dd/MMM/yy")
+                                                .format(selecteddatetime);
+                                        datecontroller.text =
+                                            formateddate.toString();
+                                      }
                                     },
                                     child: Icon(Icons.calendar_month)),
                                 border: OutlineInputBorder(),
